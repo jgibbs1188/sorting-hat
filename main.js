@@ -12,23 +12,29 @@ const startButton = () => {
     const domString = `
     <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary" type="button" id="startBtn">Get to Sorting!</button>
-  </div>
+    </div>
     `
 renderToDom("#start-btn-container", domString);
 }
 
 // Contains the form that is launched whtn the "Get to Sorting!" button is clicked
 const launchForm = (event) => {
-    if (event.target.id === "startBtn") {
+    
+    // if (event.target.id === "startBtn") {
     const domString = `
-        <div class="input-group mb-3">
-            <button type="submit" class="btn btn-primary" id="name">Sort!</button>
-            <input type="text" class="form-control" id="nameForm">
-        </div>
+        <form id="name">
+            <div class="input-group mb-3">
+                <div>
+                    <input type="text" id="nameInput" class="form-control" required>
+                </div>
+                <div>
+                    <input type="submit" value="Sort!" class="btn btn-primary" id="nameBtn">
+                </div>
+            </div>
+        </form>
     `
     renderToDom("#form-container", domString);
-    document.getElementById("name").addEventListener("submit", handleFormSubmit);
-    }
+    document.querySelector("#form-container").addEventListener("submit", handleFormSubmit);
 }
 
 // Uses Math.Random/Math.Floor to randomly assign a number to the card in the students array
@@ -58,18 +64,19 @@ const studentBuilder = (studentArray) => {
               </div>
           </div>
         `;
+        renderToDom("#student-container", domString);
     });
-    renderToDom("#student-container", domString);
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
       const newStudent = {
-        name: document.getElementById("name").value,
+        name: document.querySelector("#nameInput").value,
         house: randomHouse(),
       };
     students.push(newStudent);  
     studentBuilder(students);
+    console.log(students);
   };
 
 // Will handle the click events that occur on the page
@@ -77,13 +84,14 @@ const pageEvents = () => {
     document.querySelector("#startBtn").addEventListener("click", launchForm);
 }
 
-console.log(students);
+
 
 // Launches the page
 const init = () => {
     startButton();
     pageEvents();
     studentBuilder(students);
+    // handleFormSubmit();
 }
 
 init()
