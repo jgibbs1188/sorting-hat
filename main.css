@@ -1,0 +1,27 @@
+body {
+    background-color: cornsilk;
+}
+
+#student-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#voldArmy-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.first-years {
+    position:absolute;
+    left: auto;
+    border: 3px solid gold;
+    margin-left: 5%;
+}
+
+.dark-army {
+    position: absolute;
+    right: 0;
+    border: 3px solid darkred;
+    margin-right: 5%;
+}
