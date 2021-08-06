@@ -1,3 +1,27 @@
+
+# This is my Sorting Hat project.
+
+The goal of the project was to create an application that mimics the effect of the Sorting Hat from the Harry Potter universe.
+## ## The ideal user of this application is a member of this class or someone who has an interest in Harry Potter.
+
+## Features
+- Header that allows the user to populate a form
+- Form that will take a value and sort it into a random Hogwards house.
+- Ability to remove a student from their house and send them to Voldemort's Army
+
+## Video Walkthrough: https://www.loom.com/share/ae39417f687343c99f936b0c5cfad8bb
+
+## Relevant Links: 
+- Project:  jmg-sorting-hat.netlify.app
+- Project Board: https://github.com/jgibbs1188/sorting-hat/projects/1
+
+## Contributors
+- Joe Gibbs (https://github.com/jgibbs1188)
+
+
+
+<!--Instructions for project are below:
+
 # Sorting Hat
 
 ## Goals
@@ -49,10 +73,4 @@ Think of a way you can expel students without just hiding those divs on the page
 ## Optional Bonus
 - House Colors: The color of the student's card changes depending on which house they were sorted. 
 - Card Ordering: Sort the student cards by some criteria (i.e. alphabetically by name, by house)
-
-
-This is my Sorting Hat project.
-
-The goal of the project was to create an application that mimics the effect of the Sorting Hat from the Harry Potter universe.
-
 
