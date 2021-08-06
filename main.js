@@ -1,6 +1,5 @@
 const students = [];
 const voldArmy = [];
-let houseImg = "";
 
 // Will allow functions to print to the DOM
 const renderToDom = (divId, textToPrint) => {
@@ -37,32 +36,36 @@ const launchForm = (event) => {
     document.querySelector("#form-container").addEventListener("submit", handleFormSubmit);
 }
 
+const randomHouse = () => {
+    const houseIndex = Math.floor(Math.random() * 4) + 1;
+        if (houseIndex === 1) {
+            return 'Gryffindor';
+        } else if (houseIndex === 2) {
+            return 'HufflePuff';
+        } else if (houseIndex === 3) {
+            return 'Ravenclaw'; 
+        } else {
+            return 'Slytherin';
+        }
+}
+
+const assignHouse = (house) => {
+    if  (house === 'Gryffindor') {
+        return "https://i.pinimg.com/originals/a1/bf/0a/a1bf0a96a8d25df94e22a1219582f7f7.jpg";
+    } else if (house === 'HufflePuff') {
+        return "https://i.pinimg.com/originals/14/49/2a/14492ad1ab4718672aa32926d3abef52.jpg";
+    } else if (house === 'Ravenclaw') {
+        return "https://i.pinimg.com/originals/d9/7e/c1/d97ec181eb6a1503be859ca3743e2e1b.jpg";
+    } else {
+        return "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88362/91127/Harry-Potter-Slytherin-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__31920.1507640618.jpg?c=2";
+    }
+}
+
 // Handles what happens when I click the Sort! button. Pushes the form value and a random house to a card.
 const handleFormSubmit = (event) => {
     event.preventDefault();
-    const houseIndex = Math.floor(Math.random() * 4) + 1;
-    const randomHouse = () => {
-        
-            if (houseIndex === 1) {
-                return 'Gryffindor';
-            } else if (houseIndex === 2) {
-                return 'HufflePuff';
-            } else if (houseIndex === 3) {
-                return 'Ravenclaw'; 
-            } else {
-                return 'Slytherin';
-            }
-    }
 
-        if  (houseIndex === 1) {
-            houseImg = "https://i.pinimg.com/originals/a1/bf/0a/a1bf0a96a8d25df94e22a1219582f7f7.jpg";
-        } else if (houseIndex === 2) {
-            houseImg = "https://i.pinimg.com/originals/14/49/2a/14492ad1ab4718672aa32926d3abef52.jpg";
-        } else if (houseIndex === 3) {
-            houseImg = "https://i.pinimg.com/originals/d9/7e/c1/d97ec181eb6a1503be859ca3743e2e1b.jpg";
-        } else {
-            houseImg = "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88362/91127/Harry-Potter-Slytherin-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__31920.1507640618.jpg?c=2";
-        }
+const houseImg = assignHouse();
 
     const newStudent = {
         name: document.querySelector("#nameInput").value,
@@ -71,6 +74,7 @@ const handleFormSubmit = (event) => {
       };
     students.push(newStudent);  
     studentBuilder(students);
+    document.querySelector("form").reset();
   };
 
 // Creates a card in the students array
@@ -79,7 +83,7 @@ const studentBuilder = (studentArray) => {
     studentArray.forEach((student, i) => {
       domString += `
           <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="${houseImg}" alt="${student.house}">
+          <img class="card-img-top" src="${student.image}" alt="${student.house}">
               <div class="card-body">
                   <h5 class="card-title">${student.name}</h5>
                   <p class="card-text">${student.house}</p>
@@ -87,8 +91,8 @@ const studentBuilder = (studentArray) => {
               </div>
           </div>
         `;
-        renderToDom("#student-container", domString);
     });
+    renderToDom("#student-container", domString);
   };
   
 // Creates a card in the voldArmy array
@@ -130,7 +134,6 @@ const init = () => {
     pageEvents();
     studentBuilder(students);
     voldArmyBuilder(voldArmy);
-    // handleFormSubmit();
 }
 
 init()
