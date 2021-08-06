@@ -50,3 +50,9 @@ Think of a way you can expel students without just hiding those divs on the page
 - House Colors: The color of the student's card changes depending on which house they were sorted. 
 - Card Ordering: Sort the student cards by some criteria (i.e. alphabetically by name, by house)
 
+
+This is my Sorting Hat project.
+
+The goal of the project was to create an application that mimics the effect of the Sorting Hat from the Harry Potter universe.
+
+
